@@ -49,9 +49,11 @@
                                         $total_review = App\Models\OrderProduct::where('product_id', $details->first()->id)->where('review', '!=', null)->count();
                                         $total_star = App\Models\OrderProduct::where('product_id', $details->first()->id)->where('review', '!=', null)->sum('star');
 
-                                        $total_rating = 0;
+                                        
                                         if($total_review != 0) {
                                             $total_rating = $total_star / $total_review;
+                                        } else {
+                                            $total_rating = 0;
                                         }
 
                                     @endphp
@@ -235,6 +237,9 @@
                                                             <div class="col-lg-6 col-sm-12">
                                                                 <div class="input-box text-input mb-20">
                                                                     <textarea name="review" id="validationDefault01" cols="30" rows="10" placeholder="Your Review*"></textarea>
+                                                                    @error('review')
+                                                                        <strong class="text-danger">{{$message}}</strong>
+                                                                    @enderror
                                                                 </div>
                                                             </div>
                                                             <div class="col-lg-6 col-sm-12">

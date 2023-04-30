@@ -9,6 +9,9 @@ class CustomerController extends Controller
 {
     //review_store
     function review_store(Request $request) {
+        $request->validate([
+            'review' => 'required',
+        ]);
         Orderproduct::where('customer_id', $request->customer_id)->where('product_id', $request->product_id)->update([
             'review' => $request->review,
             'star' => $request->rate,
