@@ -13,7 +13,11 @@ class Order extends Model
         return $this->belongsTo(Customerauth::class, 'customer_id');
     }
 
-    // function rel_to_orproduct() {
-    //     return $this->belongsTo(Orderproduct::class, 'order_id');
-    // }
+    function rel_to_product() {
+        return $this->belongsTo(Product::class, 'product_id');
+    }
+
+    function rel_to_orderproduct() {
+        return $this->belongsTo(Orderproduct::class, 'order_id', 'id');
+    }
 }

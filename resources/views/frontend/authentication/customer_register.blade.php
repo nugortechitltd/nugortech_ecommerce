@@ -64,7 +64,7 @@
                                                 <strong class="text-danger">{{$message}}</strong>
                                             @enderror
                                     </div>
-                                    <div class="form row">
+                                    <div class="form row justify-content-between align-items-end">
                                         <div class="password-input col-xl-6">
                                             <input type="password" name="password" class="form-control" id="password"
                                                 placeholder="Password"  />

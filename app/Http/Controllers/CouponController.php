@@ -33,6 +33,9 @@ class CouponController extends Controller
     }
     // coupon_delete
     function coupon_delete($coupon_id) {
+        if (Offer::where('coupon_id', $coupon_id)->exists()) {
+            Offer::where('coupon_id', $coupon_id)->delete();
+        }
         Coupon::find($coupon_id)->delete();
         return back()->withSuccess('Coupon single item deleted successfully');
     }

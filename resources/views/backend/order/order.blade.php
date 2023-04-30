@@ -19,6 +19,7 @@
                         <tr>
                             <th>SL</th>
                             <th>Customer</th>
+                            {{-- <th>Image</th> --}}
                             <th>Date</th>
                             <th>ID</th>
                             <th>Subtotal</th>
@@ -36,6 +37,7 @@
                         <tr>
                             <td>{{$sl+1}}</td>
                             <td>{{$order->rel_to_customer->name}}</td>
+                            {{-- <td><img src="{{asset('uploads/products/preview')}}/{{$order->rel_to_product}}" alt=""></td> --}}
                             <td>{{$order->created_at->format('d-m-Y')}}</td>
                             <td>{{$order->order_id}}</td>
                             <td>{{$order->subtotal}} Tk</td>
@@ -100,11 +102,11 @@
                                     </button>
                                    
                                         <div class="dropdown-menu">
-                                            <button class="dropdown-item" name="status" type="submit" value="{{$order->order_id.','.'0'}}">Order Confirm</button>
-                                            <button class="dropdown-item" name="status" type="submit" value="{{$order->order_id.','.'1'}}">Order Processing</button>
-                                            <button class="dropdown-item" name="status" type="submit" value="{{$order->order_id.','.'2'}}">Order Dispatched</button>
-                                            <button class="dropdown-item" name="status" type="submit" value="{{$order->order_id.','.'3'}}">Order On Delivery</button>
-                                            <button class="dropdown-item" name="status" type="submit" value="{{$order->order_id.','.'4'}}">Order Delivered</button>
+                                            <button class="dropdown-item" name="status" type="submit" value="{{$order->order_id.','.'0'}}">Confirmed Order</button>
+                                            <button class="dropdown-item" name="status" type="submit" value="{{$order->order_id.','.'1'}}">Processing Order</button>
+                                            <button class="dropdown-item" name="status" type="submit" value="{{$order->order_id.','.'2'}}">Product Dispatched</button>
+                                            <button class="dropdown-item" name="status" type="submit" value="{{$order->order_id.','.'3'}}">On delivery</button>
+                                            <button class="dropdown-item" name="status" type="submit" value="{{$order->order_id.','.'4'}}">Product Delivered</button>
                                             <button class="dropdown-item" name="status" type="submit" value="{{$order->order_id.','.'5'}}">Order Cancel</button>
                                         </div>
                                     </form>

@@ -18,7 +18,7 @@
                 <div class="ec-cat-form">
                     <h4>Add top feature</h4>
 
-                    <form class="row" method="POST" action="{{route('feature.store.top')}}">
+                    <form class="row" method="POST" action="{{route('feature.store.top')}}" enctype="multipart/form-data">
                         @csrf
                         <div class="col-12">
                                <label for="text" class="col-form-label">Feature title</label> 
@@ -70,31 +70,31 @@
                         @csrf
                         <div class="col-12">
                                <label for="text" class="col-form-label">Feature title</label> 
-                                <input id="text" name="title" class="form-control" type="text" placeholder="Title">
-                                @error('title')
+                                <input id="text" name="title2" class="form-control" type="text" placeholder="Title">
+                                @error('title2')
                                     <strong class="text-danger">{{$message}}</strong>
                                 @enderror
                         </div>
                         <div class="col-12">
                             <label for="text" class="col-form-label">Feature button</label> 
-                            <input id="text" name="button" class="form-control" type="text" placeholder="Button text">
-                             @error('button')
+                            <input id="text" name="button2" class="form-control" type="text" placeholder="Button text">
+                             @error('button2')
                                  <strong class="text-danger">{{$message}}</strong>
                              @enderror
                         </div>
                         <div class="col-12">
                                <label for="text" class="col-form-label">Feature description</label> 
-                                <textarea id="text" name="description" class="form-control" type="text" placeholder="Description"></textarea>
-                                @error('description')
+                                <textarea id="text" name="description2" class="form-control" type="text" placeholder="Description"></textarea>
+                                @error('description2')
                                     <strong class="text-danger">{{$message}}</strong>
                                 @enderror
                         </div>
                         <div class="col-12">
                             <div class="form_customer_profilr_img">
                                 <label for="" class="col-form-label">Feature Image</label>
-                                <input type="file" name="image" class="form-control" onchange="document.getElementById('image').src = window.URL.createObjectURL(this.files[0])">
+                                <input type="file" name="image2" class="form-control" onchange="document.getElementById('image').src = window.URL.createObjectURL(this.files[0])">
                             </div>
-                            @error('image')
+                            @error('image2')
                                 <strong class="text-danger">{{$message}}</strong>
                             @enderror
                             <img width="100" class="mt-3 mb-3" id="image" height="auto" src="" alt="">

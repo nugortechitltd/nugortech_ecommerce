@@ -53,8 +53,8 @@
                             <div class="action-top">
                                 <span class="action-title">Filter</span>
                             </div>
-                            <div class="nstSlider" data-range_min="0" data-range_max="10000" data-cur_min="{{@$_GET['min'] == null ? '0' : @$_GET['min']}}"
-                                data-cur_max="{{@$_GET['max'] == null ? '100000': @$_GET['max']}}">
+                            <div class="nstSlider" data-range_min="0" data-range_max="10000" data-cur_min="{{@$_GET['min'] == null ? 0 : @$_GET['min']}}"
+                                data-cur_max="{{@$_GET['max'] == null ? 100000: @$_GET['max']}}">
                                 {{-- <div class="nstSlider" data-range_min="0" data-range_max="10000" data-cur_min="20"
                                 data-cur_max="10000"> --}}
 

@@ -10302,12 +10302,9 @@ tr:first-child {
   background-size: cover;
 }
 .banner .banner-single.bg-image-3-1 {
-  background-image: url("../images/banner/bg-pattern-1.jpg");
-  background-position: center center;
-  background-size: cover;
-  height: 575px;
-  background-repeat: no-repeat;
-  border-radius: 10px;
+  /* background-image: url("../images/banner/bg-pattern-1.jpg"); */
+  
+  
 }
 .banner .banner-single.bg-image-3-1::before {
   display: none;
@@ -13454,10 +13451,6 @@ tr:first-child {
 }
 
 .rts-deal-section1 .container .section-inner {
-  background: url(../images/hand-picked/counter-bg-1.jpg);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
   border-radius: 10px;
 }
 .rts-deal-section1 .container .section-inner .single-inner {
@@ -24584,4 +24577,16 @@ button {
   border-radius: 100%;
   -webkit-transition: all 0.2s ease;
   transition: all 0.2s ease;
+}
+
+.location-charge > input[type="radio"]:checked + label:before, .location-charge > input[type="radio"]:not(:checked) + label:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 18px;
+  height: 18px;
+  border: none;
+  border-radius: 100%;
+  background: #fff;
 }

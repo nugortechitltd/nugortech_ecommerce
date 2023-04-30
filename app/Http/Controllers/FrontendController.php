@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Aboutus;
+use App\Models\Banner;
 use App\Models\Blog;
 use App\Models\Brand;
 use App\Models\Category;
@@ -34,15 +35,16 @@ class FrontendController extends Controller
         $deals = Deal::latest()->take(1)->get();
         $poster = Poster::latest()->take(1)->get();
         $blog_latest = Blog::latest()->take(3)->get();
+        $banner = Banner::latest()->take(3)->get();
 
         
-        $total_review = Orderproduct::where('product_id', $featured->first()->id)->where('review', '!=', null)->count();
-        $total_star = OrderProduct::where('product_id', $featured->first()->id)->where('review', '!=', null)->sum('star');
+        // $total_review = Orderproduct::where('product_id', $featured->first()->id)->where('review', '!=', null)->count();
+        // $total_star = OrderProduct::where('product_id', $featured->first()->id)->where('review', '!=', null)->sum('star');
                                   
-        $total_rating = 0;
-        if($total_review != 0) {
-            $total_rating = $total_star / $total_review;
-        }
+        // $total_rating = 0;
+        // if($total_review != 0) {
+        //     $total_rating = $total_star / $total_review;
+        // }
 
         
         return view('frontend.index.index', [
@@ -56,7 +58,8 @@ class FrontendController extends Controller
             'deals' => $deals,
             'poster' => $poster,
             'blog_latest' => $blog_latest,
-            'total_rating' => $total_rating,
+            'banner' => $banner,
+            // 'total_rating' => $total_rating,
         ]);
     }
 
@@ -76,7 +79,7 @@ class FrontendController extends Controller
         $total_star = OrderProduct::where('product_id', $details->first()->id)->where('review', '!=', null)->sum('star');
 
         // $available_size = Inventory::where('product_id', $details->first()->id)->first()->size_id;
-        $sizes = Size::all();
+        $sizes = Size::orderBy('size_name', 'DESC')->get();
         return view('frontend.product_details.product_details', [
             'details' => $details,
             'thumbnails' => $thumbnails,

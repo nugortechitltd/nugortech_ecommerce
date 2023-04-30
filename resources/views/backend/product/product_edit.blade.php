@@ -50,7 +50,7 @@
                                         <select name="brand_id">
                                             <option value="">Select brand</option>
                                             @foreach ($brand as $brand)
-                                             <option value="{{$brand->id}}" {{$brand->id ? 'selected': ''}}>{{$brand->brand_name}}</option>
+                                             <option value="{{$brand->id}}" {{$product->brand_id == $brand->id ? 'selected': ''}}>{{$brand->brand_name}}</option>
                                             @endforeach
                                         </select>
                                     </div>

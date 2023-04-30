@@ -41,7 +41,7 @@
                                 <td>
                                     @php
                                             if($transaction->status == 0) {
-                                                echo 'Confirmed Order';
+                                                echo 'Pending Order';
                                             } else if($transaction->status == 1) {
                                                 echo 'Processing Order';
                                             } else if($transaction->status == 2) {

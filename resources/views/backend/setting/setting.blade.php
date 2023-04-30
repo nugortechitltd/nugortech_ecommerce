@@ -169,7 +169,7 @@
                                 @enderror
                         </div> 
                         <div class="col-12">
-                               <label for="text" class="col-form-label">Work hours</label> 
+                               <label for="text" class="col-form-label">Email</label> 
                                 <input name="email" class="form-control" type="email" placeholder="Email">
                                 @error('email')
                                     <strong class="text-danger">{{$message}}</strong>
@@ -177,7 +177,7 @@
                         </div>
                          <div class="col-12">
                                <label for="text" class="col-form-label">Web link</label> 
-                                <input name="web" class="form-control" type="text" placeholder="Site link">
+                                <input name="web" class="form-control" type="url" placeholder="Site link">
                                 @error('web')
                                     <strong class="text-danger">{{$message}}</strong>
                                 @enderror

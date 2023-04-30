@@ -12,7 +12,12 @@
                                 <nav>
                                     <ul>
                                         @foreach ($categories as $category)
-                                            <li class="d-flex justify-content-between" style="cursor: pointer!important"><option class="category_id" value="{{$category->id}}">{{ $category->category_name }}</option><i class="rt rt-arrow-right-long me-5"></i></li>
+                                        <li class="d-flex justify-content-between" style="cursor: pointer!important">
+                                            <div class="category-label">
+                                                <input id="category{{$category->id}}" class="category_id" name="category" type="radio" value="{{$category->id}}" {{($category->id == @$_GET['category_id'])?'checked': ''}}>
+                                                <label for="category{{$category->id}}" class="checkbox-custom-label">{{$category->category_name}}</label>
+                                            </div>
+                                        </li>
                                         @endforeach
                                     </ul>
                                 </nav>
@@ -22,8 +27,28 @@
                     <div class="col-xl-10 col-md-8 col-sm-12 gutter-2">
                         <div class="swiper bannerSlide2">
                             <div class="swiper-wrapper">
+                                @forelse ($banner as $banner)
                                 <div class="swiper-slide">
-                                    <div class="banner-single bg-image bg-image-3-1">
+                                    <div class="banner-single bg-image" style="background: url({{asset('uploads/hero')}}/{{$banner->image}}); background-position: center center; background-size: cover; background-repeat: no-repeat; height: 575px; border-radius: 10px;">
+                                        <div class="container">
+                                            <div class="single-inner">
+                                                <div class="content-box">
+                                                    <p class="slider-subtitle"><img
+                                                            src="{{ asset('frontend/assets/images/banner/wvbo-icon.png') }}"
+                                                            alt=""> {{$banner->head}}</p>
+                                                    <h2 class="slider-title"> {{$banner->title}} <br> {{$banner->title2}}</h2>
+                                                    <div class="slider-description">
+                                                        <p>{{$banner->desc}}</p>
+                                                    </div>
+                                                    <a href="{{route('shop')}}" class="slider-btn2">View Collections</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                @empty
+                                <div class="swiper-slide">
+                                    <div class="banner-single bg-image" style="background: url({{asset('frontend/assets/images/banner/bg-pattern-1.jpg')}}); background-position: center center; background-size: cover; background-repeat: no-repeat; height: 575px; border-radius: 10px;">
                                         <div class="container">
                                             <div class="single-inner">
                                                 <div class="content-box">
@@ -41,47 +66,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="banner-single bg-image bg-image-3-3">
-                                        <div class="container">
-                                            <div class="single-inner">
-                                                <div class="content-box">
-                                                    <p class="slider-subtitle"><img
-                                                            src="{{ asset('frontend/assets/images/banner/wvbo-icon.png') }}"
-                                                            alt=""> Spring
-                                                        summer 22 women’s collection </p>
-                                                    <h2 class="slider-title"> NEW COLLECTION <br> FOR WOMEN</h2>
-                                                    <div class="slider-description">
-                                                        <p>Easy & safe payment with PayPal. sequines & embroidered
-                                                            for all</p>
-                                                    </div>
-                                                    <a href="{{route('shop')}}" class="slider-btn2">View Collections</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="banner-single bg-image bg-image-3-4">
-                                        <div class="container">
-                                            <div class="single-inner">
-                                                <div class="content-box">
-                                                    <p class="slider-subtitle"><img
-                                                            src="{{ asset('frontend/assets/images/banner/wvbo-icon.png') }}"
-                                                            alt=""> Spring
-                                                        summer 22 women’s collection </p>
-                                                    <h2 class="slider-title"> WINTER DRESS <br> FOR WOMEN</h2>
-                                                    <div class="slider-description">
-                                                        <p>Easy & safe payment with PayPal. sequines & embroidered
-                                                            for all</p>
-                                                    </div>
-                                                    <a href="{{route('shop')}}" class="slider-btn2">View Collections</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                </div> 
+                                @endforelse
                             </div>
                             <div class="slider-navigation">
                                 <div class="swiper-button-prev slider-btn prev"><i class="rt rt-arrow-left-long"></i></div>
@@ -203,7 +189,8 @@
     
     <div class="rts-deal-section1">
         <div class="container">
-            <div class="section-inner">
+            @forelse ($deals as $deal)
+            <div class="section-inner" style="background: url({{asset('uploads/deal')}}/{{$deal->image}}); background-repeat: no-repeat; background-position: center; background-size: cover;">
                 <div class="row">
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12"></div>
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
@@ -213,7 +200,7 @@
                                     <img class="line-1" src="{{asset('frontend/assets/images/banner/wvbo-icon.png')}}" alt="">
                                     <span class="sub-text">Deal Of The Week</span>
                                 </div>
-                                @foreach ($deals as $deal)
+                                
                                 <h2 style="width: 76%" class="slider-title">{{$deal->title}} </h2>
                                 <div class="slider-description">
                                     <p>{{$deal->description}}</p>
@@ -227,17 +214,54 @@
                                     </ul>
                                 </div>
                                 <div class="content-bottom">
-                                    <div class="img-box"><img src="assets/images/hand-picked/deal-icon.png" alt="">
+                                    <div class="img-box"><img src="{{asset('frontend/assets/images/hand-picked/deal-icon.png')}}" alt="">
                                     </div>
                                     <p class="content">{{$deal->content1}}<br>
                                         {{$deal->content2}}</p>
                                 </div>
-                                @endforeach
+                                
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            @empty
+            <div class="section-inner" style="background: url({{asset('frontend/assets/images/hand-picked/counter-bg-1.jpg')}}); background-repeat: no-repeat; background-position: center; background-size: cover;">
+                <div class="row">
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12"></div>
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                        <div class="single-inner">
+                            <div class="content-box">
+                                <div class="sub-content">
+                                    <img class="line-1" src="{{asset('frontend/assets/images/banner/wvbo-icon.png')}}" alt="">
+                                    <span class="sub-text">Deal Of The Week</span>
+                                </div>
+                                
+                                <h2 style="width: 76%" class="slider-title">title</h2>
+                                <div class="slider-description">
+                                    <p>description</p>
+                                </div>
+                                <div class="countdown" id="countdown">
+                                    <ul>
+                                        <li><span id="days"></span>D</li>
+                                        <li><span id="hours"></span>H</li>
+                                        <li><span id="minutes"></span>M</li>
+                                        <li><span id="seconds"></span>S</li>
+                                    </ul>
+                                </div>
+                                <div class="content-bottom">
+                                    <div class="img-box"><img src="{{asset('frontend/assets/images/hand-picked/deal-icon.png')}}" alt="">
+                                    </div>
+                                    <p class="content">content1<br>
+                                    content2</p>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @endforelse
         </div>
     </div>
     <!--================= Deal Section End Here =================-->
@@ -280,14 +304,14 @@
                                             $total_rating = $total_star / $total_review;
                                         }
                                     @endphp --}}
-                                    @php
+                                    {{-- @php
                                     for ($i = 1; $i <= $total_rating; $i++) {
                                         echo '<i class="fas fa-star"></i>';
                                     }
                                     for ($j = $total_rating + 1 ; $j <= 5; $j++) {
                                         echo '<i class="far fa-star"></i>';
                                     }
-                                    @endphp
+                                    @endphp --}}
                                     
                                 </div>
                                 <a href="{{route('product.details', $feat_product->slug)}}" class="product-name">{{$feat_product->product_name}}</a>
@@ -408,7 +432,7 @@
                             <div class="swiper-wrapper">
                                 @foreach ($brands as $brand)
                                 <div class="swiper-slide">
-                                    <img src="{{asset('uploads/brand')}}/{{$brand->brand_image}}"alt="Brand Logo">
+                                    <a class="brand-front" href="{{route('shop')}}"><img src="{{asset('uploads/brand')}}/{{$brand->brand_image}}"alt="Brand Logo"></a>
                                 </div>
                                 @endforeach
                             </div>

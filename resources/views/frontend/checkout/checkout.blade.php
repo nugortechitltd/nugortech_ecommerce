@@ -89,13 +89,13 @@
 
                     @foreach ($charge_details as $charge)
                     <div class="mb-3">
-                        <div class="form-check">
+                        <div class="form-check location-charge">
                             <input class="form-check-input charge" type="radio" value="{{$charge->first()->charge1}}" name="charge" id="flexRadioDefault2">
                             <label class="form-check-label" for="flexRadioDefault2">
                                 {{$charge->first()->location1}}
                             </label>
                           </div>
-                        <div class="form-check">
+                        <div class="form-check location-charge">
                             <input class="form-check-input charge" type="radio" name="charge" value="{{$charge->first()->charge2}}" id="flexRadioDefault1">
                             <label class="form-check-label" for="flexRadioDefault1">
                                 {{$charge->first()->location2}}

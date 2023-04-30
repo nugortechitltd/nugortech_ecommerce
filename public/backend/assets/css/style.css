@@ -11270,6 +11270,7 @@ textarea.form-control-lg {
   line-height: inherit;
   height: 100%;
   overflow: hidden;
+  margin: 0;
 }
 @media (max-width: 1199.98px) {
   .ec-odr-dtl .info-grid {
@@ -18695,9 +18696,9 @@ label {
 
 .dash-card .card-body span {
   position: absolute;
-  right: 38px;
-  bottom: 0px;
-  font-size: 70px;
+  right: 20px;
+  top: 0px;
+  font-size: 75px;
   border-radius: 15px;
   text-align: center;
   color: #ffffff;
@@ -25034,7 +25035,7 @@ padding-top: 40px;
   align-items: center;
 }
 .info-content ul li{ 
-  padding-bottom: 5px;
+  padding-top: 7px;
   font-weight: 600;
 }
 .info-content ul li span{

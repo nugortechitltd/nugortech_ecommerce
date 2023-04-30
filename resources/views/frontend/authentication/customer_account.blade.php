@@ -18,7 +18,6 @@
                 <div class="account-side-navigation">
                     <button class="filter-btn active" data-show=".dashboard"><i class="fal fa-chart-bar"></i>Dashboard</button>
                     <button class="filter-btn" data-show=".orders"><i class="fal fa-shopping-cart"></i> Orders</button>
-                    {{-- <button class="filter-btn" data-show=".address"><i class="fal fa-map-marker-alt"></i>Address</button> --}}
                     <button class="filter-btn" data-show=".accountdtls"><i class="fal fa-user"></i> Account Details</button>
                     <a href="{{route('customer.logout')}}" class="filter-btn" data-show=".dashboard"><i
                             class="fal fa-long-arrow-left"></i>Logout</a>
@@ -47,21 +46,11 @@
                                 <span class="title">Active Orders</span>
                                 <span class="value">{{App\Models\Order::where('customer_id', Auth::guard('customerauth')->id())->where('status', '!=', '5')->count()}}</span>
                             </div>
-                            {{-- <div class="activity-item">
-                                <div class="icon"><i class="fas fa-download"></i></div>
-                                <span class="title">Downloads</span>
-                                <span class="value">10</span>
-                            </div> --}}
                             <div class="activity-item">
                                 <div class="icon"><i class="fas fa-map-marker-alt"></i></div>
                                 <span class="title">Country</span>
                                 <span class="value">{{Auth::guard('customerauth')->user()->country}}</span>
                             </div>
-                            {{-- <div class="activity-item">
-                                <div class="icon"><i class="fas fa-user"></i></div>
-                                <span class="title">Account Details</span>
-                                <span class="value">33</span>
-                            </div> --}}
                             <div class="activity-item">
                                 <div class="icon"><i class="fas fa-heart"></i></div>
                                 <span class="title">Wishlist</span>
@@ -75,14 +64,14 @@
                     </div>
                     <div class="account-main orders filterd-items hide">
                         <h2 class="mb--30">My Orders ({{$orders->count()}})</h2>
-                        <table class="table">
+                        <table class="table table-striped m-auto text-center">
                             <thead>
                                 <tr class="top-tr">
-                                    <th>Order</th>
+                                    <th>Order ID</th>
                                     <th>Date</th>
                                     <th>Status</th>
                                     <th>Total</th>
-                                    <th>Invoice</th>
+                                    <th class="m-auto text-center">Invoice</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -123,43 +112,29 @@
                                     </span>
                                     </td>
                                     <td>{{$order->total}} Tk</td>
-                                    {{-- <td>Download</td> --}}
-                                    <td><a href="{{route('download.invoice', $order->id)}}" class="btn btn-info text-white">Download</a></td>
-                                    {{-- @foreach (App\Models\Orderproduct::where('order_id', $order->order_id)->get() as $product)
-                                    <td><img src="{{asset('uploads/products/preview')}}/{{$product->rel_to_product->preview_one}}" width="60" alt=""></td>
-                                    @endforeach --}}
+                                    <td class="m-auto text-center"><a href="{{route('download.invoice', $order->id)}}" class="btn btn-info text-white">Download</a></td>
+
+                                        @foreach (App\Models\Orderproduct::where('order_id', $order->order_id)->get() as $product)
+                                            <tbody class="table table-dark text-center m-auto w-100">
+                                                    <tr class="text-center m-auto">
+                                                        <td class="text-center m-auto">
+                                                            <img style="width: 50px" src="{{asset('uploads/products/preview')}}/{{$product->rel_to_product->preview_one}}" alt="">
+                                                        </td>
+                                                        <td class="text-center m-auto">{{$product->rel_to_product->product_name}}</td>
+                                                        @php
+                                                            $total = $product->rel_to_product->after_discount*$product->quantity
+                                                        @endphp
+                                                        <td class="text-center m-auto">{{$product->rel_to_product->after_discount}} * {{$product->quantity}}</td>
+                                                        <td>{{$product->rel_to_product->rel_to_category->category_name}}</td>
+                                                        <td class="text-center m-auto">{{$total}} Tk</td>
+                                                    </tr>
+                                            </tbody>
+                                            @endforeach
                                 </tr>
                                 @endforeach
                             </tbody>
                         </table>
                     </div>
-                    {{-- <div class="account-main address filterd-items hide">
-                        <div class="row">
-                            <div class="col-xl-5 col-md-5">
-                                <div class="billing-address">
-                                    <h2 class="mb--30">Billing Address</h2>
-                                    <address>
-                                        3522 Interstate<br>
-                                        75 Business Spur,<br>
-                                        Sault Ste. <br>Marie, MI 49783
-                                    </address>
-                                    <p class="mb--10">New York</p>
-                                    <a href="#" class="btn-small">Edit</a>
-                                </div>
-                            </div>
-                            <div class="col-xl-5 col-md-5">
-                                <div class="shipping-address">
-                                    <h4 class="mb--30">Shipping Address</h4>
-                                    <address>
-                                        4299 Express Lane<br>
-                                        Sarasota, <br>FL 34249 USA <br>Phone: 1.941.227.4444
-                                    </address>
-                                    <p class="mb--10">Sarasota</p>
-                                    <a href="#" class="btn-small">Edit</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div> --}}
                     <div class="account-main accountdtls filterd-items hide">
                         <div class="login-form">
                             <div class="section-title">

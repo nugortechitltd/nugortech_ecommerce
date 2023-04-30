@@ -13,13 +13,13 @@ return new class extends Migration
     {
         Schema::create('touches', function (Blueprint $table) {
             $table->id();
-            $table->string('location');
+            $table->text('location');
             $table->string('phone1');
             $table->string('phone2')->nullable();
-            $table->string('hours1');
-            $table->string('hours2');
+            $table->text('hours1');
+            $table->string('hours2')->nullable();
             $table->string('email');
-            $table->string('web');
+            $table->text('web');
             $table->timestamps();
         });
     }

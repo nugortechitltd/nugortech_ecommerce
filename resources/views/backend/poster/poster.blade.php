@@ -96,7 +96,7 @@
                             @error('image3')
                                 <strong class="text-danger">{{$message}}</strong>
                             @enderror
-                            <img width="100" class="mt-3 mb-3" id="image1" height="auto" src="" alt="">
+                            <img width="100" class="mt-3 mb-3" id="image3" height="auto" src="" alt="">
                         </div>
                         <div class="col-12 mt-3">
                             <button name="submit" type="submit" class="btn btn-primary">Add poster</button>

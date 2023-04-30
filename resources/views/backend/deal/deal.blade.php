@@ -28,26 +28,36 @@
                                 @enderror
                         </div> 
                         <div class="col-12">
-                               <label for="text" class="col-form-label">Content top</label> 
-                                <input id="text" name="content1" class="form-control" type="text" placeholder="content top">
-                                @error('content1')
-                                    <strong class="text-danger">{{$message}}</strong>
-                                @enderror
-                        </div> 
-                        <div class="col-12">
-                               <label for="text" class="col-form-label">Content bottom</label> 
-                                <input id="text" name="content2" class="form-control" type="text" placeholder="content bottom">
-                                @error('content2')
-                                    <strong class="text-danger">{{$message}}</strong>
-                                @enderror
-                        </div> 
-                        <div class="col-12">
                                <label for="text" class="col-form-label">Description</label> 
                                 <textarea id="text" name="description" class="form-control" type="text" placeholder="description"></textarea>
                                 @error('description')
                                     <strong class="text-danger">{{$message}}</strong>
                                 @enderror
                         </div> 
+                        <div class="col-12">
+                            <label for="text" class="col-form-label">Content top</label> 
+                             <input id="text" name="content1" class="form-control" type="text" placeholder="content top">
+                             @error('content1')
+                                 <strong class="text-danger">{{$message}}</strong>
+                             @enderror
+                        </div> 
+                        <div class="col-12">
+                                <label for="text" class="col-form-label">Content bottom</label> 
+                                <input id="text" name="content2" class="form-control" type="text" placeholder="content bottom">
+                                @error('content2')
+                                    <strong class="text-danger">{{$message}}</strong>
+                                @enderror
+                        </div> 
+                        <div class="col-12">
+                            <div class="form_customer_profilr_img">
+                                <label for="" class="col-form-label">Image</label>
+                                <input type="file" name="image" class="form-control" onchange="document.getElementById('image').src = window.URL.createObjectURL(this.files[0])">
+                            </div>
+                            @error('image')
+                                <strong class="text-danger">{{$message}}</strong>
+                            @enderror
+                            <img width="100" class="mt-3 mb-3" id="image" height="auto" src="" alt="">
+                        </div>
                             <div class="col-12 mt-3">
                                 <button type="submit" class="btn btn-primary">Add deal</button>
                             </div>
@@ -72,6 +82,7 @@
                                 <th>Content top</th>
                                 <th>Content bottom</th>
                                 <th>Description</th>
+                                <th>Image</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -84,6 +95,7 @@
                                 <td>{{$deal->content1}}</td>
                                 <td>{{$deal->content2}}</td>
                                 <td>{{Str::limit($deal->description, '50', '...')}}</td>
+                                <td><img class="cat-thumb" src="{{asset('uploads/deal')}}/{{$deal->image}}" alt="Deal Image" /></td>
                                 <td>
                                     <a href="{{route('deal.delete', $deal->id)}}" class="badge badge-danger">Delete</a>
                                 </td>

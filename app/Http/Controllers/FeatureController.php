@@ -43,14 +43,25 @@ class FeatureController extends Controller
     }
     // Feature store bottom
     function feature_store_bottom(Request $request) {
+        $request->validate([
+            'title2' => 'required',
+            'button2' => 'required',
+            'description2' => 'required',
+            'image2' => 'required|image',
+        ], [
+            'image2.required' => "The image field is required. ",
+            'title2.required' => "The title field is required.",
+            'button2.required' => "The button field is required.",
+            'description2.required' => "The description field is required.",
+        ]);
         $feature_id = Featurebottom::insertGetId([
-            'title' => $request->title,
-            'button' => $request->button,
-            'description' => $request->description,
+            'title' => $request->title2,
+            'button' => $request->button2,
+            'description' => $request->description2,
             'created_at' => Carbon::now(),
         ]);
 
-        $uploaded_file_one = $request->image;
+        $uploaded_file_one = $request->image2;
         $extension = $uploaded_file_one->getClientOriginalExtension();
         $file_name_one = 'feature'.'-'.rand(1000, 9999).'.'.$extension;
         Image::make($uploaded_file_one)->resize(705, 440)->save(public_path('uploads/feature/'.$file_name_one));

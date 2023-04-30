@@ -110,7 +110,7 @@
                                         <img width="100" class="mt-3 mb-3" id="image2" height="auto" src="" alt="">
                                     </div>
                                     <div class="form_customer_profilr_img col-md-12 mt-3">
-                                        <label for="" class="col-form-label">Product Thumbnail</label>
+                                        <label for="" class="col-form-label">Gallery Images</label>
                                         <input type="file" id="thumbnail" name="thumbnail[]" multiple style="margin-bottom: 0px !important" class="form-control">
                                         @error('thumbnail')
                                             <strong class="text-danger">{{$message}}</strong>

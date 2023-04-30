@@ -125,7 +125,7 @@
                                             @if ($size->rel_to_size->id == 1)
                                                 <div class="form-check size-option form-option form-check-inline mb-2 size-label">
                                                     <input class="form-check-input" value="{{$size->rel_to_size->id}}" type="radio" name="size_id" id="size{{$size->id}}">
-                                                    <label class="form-option-label product__details__label form-option-size" for="size{{$size->id}}"><span>{{$size->rel_to_size->size_name}}</span></label>
+                                                    <label class="form-option-label product__details__label form-option-size" for="size{{$size->id}}"><span>{{$size->rel_to_size->size_name == null ? 'NA': $size->rel_to_size->size_name}}</span></label>
                                                 </div>
                                             @else
                                                 <div class="form-check size-option form-option form-check-inline mb-2 size-label">

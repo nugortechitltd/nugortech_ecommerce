@@ -25,7 +25,6 @@ class ReviewController extends Controller
 
     // review_udpate
     function review_udpate(Request $request)  {
-        // print_r($request->all());
         Orderproduct::where('id', $request->review_id)->update([
             'star' => $request->star,
         ]);

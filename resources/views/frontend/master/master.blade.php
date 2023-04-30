@@ -192,19 +192,6 @@
                                     </div>
                                 </div>
                             </div>
-                            @auth('customerauth')
-                                <div class="dropdown">
-                                    <div class="account" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="rt-user-2"></i>
-                                    </div>
-                                    <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="{{route('customer.account')}}">Profile</a></li>
-                                    <li><a class="dropdown-item" href="{{route('customer.logout')}}">Log out</a></li>
-                                    </ul>
-                                </div>
-                              @else
-                              <a href="{{ route('customer.login') }}" class="account"><i class="rt-user-2"></i></a>
-                            @endauth
                             <div class="cart action-item" style="margin-right: 20px">
                                 <div class="cart-nav">
                                     <div class="cart-icon icon"><a href="#0"><i aria-hidden="true" class="fas fa-shopping-basket"></i></a>
@@ -219,6 +206,19 @@
                                     </div>
                                 </div>
                             </div>
+                            @auth('customerauth')
+                                <div class="dropdown">
+                                    <div class="account" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="rt-user-2"></i>
+                                    </div>
+                                    <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="{{route('customer.account')}}">Profile</a></li>
+                                    <li><a class="dropdown-item" href="{{route('customer.logout')}}">Log out</a></li>
+                                    </ul>
+                                </div>
+                              @else
+                              <a href="{{ route('customer.login') }}" class="account"><i class="rt-user-2"></i></a>
+                            @endauth
                         </div>
                     </div>
                 </div>
@@ -294,13 +294,17 @@
             <div class="offset-sidebar-main">
                 <div class="offset-widget mb-40">
                     <div class="info-widget">
-                        <img src="assets/images/logo1.svg" alt="">
+                        
+                        @if (App\Models\Aboutus::latest()->exists())
+                            <img src="{{ asset('uploads/logo') }}/{{App\Models\Aboutus::latest()->take(1)->first()->logo}}" alt="weiboo-logo">
+                        @else
+                            <img src="assets/images/logo1.svg" alt="">
+                        @endif
                         @if (App\Models\Aboutus::latest()->take(1)->exists())
                             <p class="mb-30">{{App\Models\Aboutus::latest()->take(1)->first()->about}}</p>
                             @else
                             <p class="mb-30">About us content</p>
                             @endif
-                        
                     </div>
                     <div class="info-widget info-widget2">
                         <h4 class="offset-title mb-20">Get In Touch </h4>
@@ -404,16 +408,28 @@
                 <div class="cart action-item">
                     <div class="cart-nav">
                         <div class="cart-icon icon"><i class="rt-cart"></i><span
-                                class="wishlist-dot icon-dot">3</span>
+                                class="wishlist-dot icon-dot">{{$cart->count()}}</span>
                         </div>
                     </div>
                 </div>
                 
                 <div class="wishlist action-item">
-                    <div class="favourite-icon icon"><i class="rt-heart"></i><span class="cart-dot icon-dot">0</span>
+                    <div class="favourite-icon icon"><i class="rt-heart"></i><span class="cart-dot icon-dot">{{$wishlist->count()}}</span>
                     </div>
                 </div>
-                <a href="login.html" class="account"><i class="rt-user-2"></i></a>
+                @auth('customerauth')
+                    <div class="dropdown">
+                        <div class="account" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="rt-user-2"></i>
+                        </div>
+                        <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{{route('customer.account')}}">Profile</a></li>
+                        <li><a class="dropdown-item" href="{{route('customer.logout')}}">Log out</a></li>
+                        </ul>
+                    </div>
+                    @else
+                    <a href="{{ route('customer.login') }}" class="account"><i class="rt-user-2"></i></a>
+                @endauth
             </div>
             <!-- side-mobile-menu end -->
         </aside>

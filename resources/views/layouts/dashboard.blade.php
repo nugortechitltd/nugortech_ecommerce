@@ -123,19 +123,14 @@
                             </a>
                             <div class="collapse {{ Request::is('category*') ? 'show' : '' }}">
                                 <ul class="sub-menu" id="categorys" data-parent="#sidebar-menu">
-                                    <li class="{{ Request::is('category/list') ? 'active' : '' }}">
-                                        <a class="sidenav-item-link" href="{{ route('category.list') }}">
-                                            <span class="nav-text">All Category</span>
-                                        </a>
-                                    </li>
                                     <li class="{{ Request::is('category/add') ? 'active' : '' }}">
                                         <a class="sidenav-item-link" href="{{ route('category') }}">
                                             <span class="nav-text">Add Category</span>
                                         </a>
                                     </li>
-                                    <li class="{{ Request::is('category/subcategory/list') ? 'active' : '' }}">
-                                        <a class="sidenav-item-link" href="{{ route('subcategory.list') }}">
-                                            <span class="nav-text">All Subcategory</span>
+                                    <li class="{{ Request::is('category/list') ? 'active' : '' }}">
+                                        <a class="sidenav-item-link" href="{{ route('category.list') }}">
+                                            <span class="nav-text">All Category</span>
                                         </a>
                                     </li>
                                     <li class="{{ Request::is('category/subcategory/add') ? 'active' : '' }}">
@@ -143,16 +138,11 @@
                                             <span class="nav-text">Add Subcategory</span>
                                         </a>
                                     </li>
-                                    {{-- <li class="{{ Request::is('category/maincategory/list') ? 'active' : '' }}">
-                                        <a class="sidenav-item-link" href="{{ route('maincategory.list') }}">
-                                            <span class="nav-text">All Maincategory</span>
+                                    <li class="{{ Request::is('category/subcategory/list') ? 'active' : '' }}">
+                                        <a class="sidenav-item-link" href="{{ route('subcategory.list') }}">
+                                            <span class="nav-text">All Subcategory</span>
                                         </a>
                                     </li>
-                                    <li class="{{ Request::is('category/maincategory/add') ? 'active' : '' }}">
-                                        <a class="sidenav-item-link" href="{{ route('maincategory') }}">
-                                            <span class="nav-text">Maincategory</span>
-                                        </a>
-                                    </li> --}}
                                 </ul>
                             </div>
                         </li>
@@ -166,24 +156,9 @@
                             </a>
                             <div class="collapse {{ Request::is('product*') ? 'show' : '' }}">
                                 <ul class="sub-menu" id="products" data-parent="#sidebar-menu">
-                                    <li class="{{ Request::is('product/list') ? 'active' : '' }}">
-                                        <a class="sidenav-item-link" href="{{ route('product.list') }}">
-                                            <span class="nav-text">All Product</span>
-                                        </a>
-                                    </li>
-                                    <li class="{{ Request::is('product') ? 'active' : '' }}">
-                                        <a class="sidenav-item-link" href="{{ route('product') }}">
-                                            <span class="nav-text">Product</span>
-                                        </a>
-                                    </li>
-                                    <li class="{{ Request::is('product/brand/list') ? 'active' : '' }}">
-                                        <a class="sidenav-item-link" href="{{ route('brand.list') }}">
-                                            <span class="nav-text">All Brand</span>
-                                        </a>
-                                    </li>
-                                    <li class="{{ Request::is('product/brand') ? 'active' : '' }}">
-                                        <a class="sidenav-item-link" href="{{ route('brand') }}">
-                                            <span class="nav-text">Brand</span>
+                                    <li class="{{ Request::is('product/variation') ? 'active' : '' }}">
+                                        <a class="sidenav-item-link" href="{{ route('variation') }}">
+                                            <span class="nav-text">Variation</span>
                                         </a>
                                     </li>
                                     <li class="{{ Request::is('product/variation/list') ? 'active' : '' }}">
@@ -191,9 +166,24 @@
                                             <span class="nav-text">All Variation</span>
                                         </a>
                                     </li>
-                                    <li class="{{ Request::is('product/variation') ? 'active' : '' }}">
-                                        <a class="sidenav-item-link" href="{{ route('variation') }}">
-                                            <span class="nav-text">Variation</span>
+                                    <li class="{{ Request::is('product/brand') ? 'active' : '' }}">
+                                        <a class="sidenav-item-link" href="{{ route('brand') }}">
+                                            <span class="nav-text">Brand</span>
+                                        </a>
+                                    </li>
+                                    <li class="{{ Request::is('product/brand/list') ? 'active' : '' }}">
+                                        <a class="sidenav-item-link" href="{{ route('brand.list') }}">
+                                            <span class="nav-text">All Brand</span>
+                                        </a>
+                                    </li>
+                                    <li class="{{ Request::is('product') ? 'active' : '' }}">
+                                        <a class="sidenav-item-link" href="{{ route('product') }}">
+                                            <span class="nav-text">Product</span>
+                                        </a>
+                                    </li>
+                                    <li class="{{ Request::is('product/list') ? 'active' : '' }}">
+                                        <a class="sidenav-item-link" href="{{ route('product.list') }}">
+                                            <span class="nav-text">All Product</span>
                                         </a>
                                     </li>
                                 </ul>
@@ -241,29 +231,7 @@
                                 </ul>
                             </div>
                         </li>
-                        <!-- Faq -->
-                        <li class="has-sub {{ Request::is('faq*') ? 'active' : '' }}">
-                            <a class="sidenav-item-link" href="javascript:void(0)">
-                                <i class="mdi mdi-calendar-question"></i>
-                                <span class="nav-text">Faq's</span> <b class="caret"></b>
-                            </a>
-                            <div class="collapse {{ Request::is('faq*') ? 'show' : '' }}">
-                                <ul class="sub-menu" id="faqs" data-parent="#sidebar-menu">
-                                    <li class="">
-                                        <a class="sidenav-item-link {{ Request::is('faq/list') ? 'active' : '' }}"
-                                            href="{{ route('faq.list') }}">
-                                            <span class="nav-text">All faq</span>
-                                        </a>
-                                    </li>
-                                    <li class="">
-                                        <a class="sidenav-item-link {{ Request::is('faq/store*') ? 'active' : '' }}"
-                                            href="{{ route('faq.store') }}">
-                                            <span class="nav-text">Add faq</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
+                        
                         <!-- About -->
                         <li class="has-sub {{ Request::is('about*') ? 'active' : '' }}">
                             <a class="sidenav-item-link" href="javascript:void(0)">
@@ -346,29 +314,7 @@
                             </a>
                         </li> --}}
                         <!-- Team -->
-                        <!-- Team -->
-                        <li class="has-sub {{ Request::is('team*') ? 'active' : '' }}">
-                            <a class="sidenav-item-link" href="javascript:void(0)">
-                                <i class="mdi mdi-account-multiple"></i>
-                                <span class="nav-text">Team</span> <b class="caret"></b>
-                            </a>
-                            <div class="collapse {{ Request::is('team*') ? 'show' : '' }}">
-                                <ul class="sub-menu" id="team" data-parent="#sidebar-menu">
-                                    <li class="">
-                                        <a class="sidenav-item-link {{ Request::is('team/list') ? 'active' : '' }}"
-                                            href="{{ route('team.list') }}">
-                                            <span class="nav-text">All team</span>
-                                        </a>
-                                    </li>
-                                    <li class="">
-                                        <a class="sidenav-item-link {{ Request::is('team') ? 'active' : '' }}"
-                                            href="{{ route('team') }}">
-                                            <span class="nav-text">Add team</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
+                        
 
                         <!-- Feature -->
                         <li class="has-sub {{ Request::is('feature*') ? 'active' : '' }}">
@@ -394,6 +340,54 @@
                                         <a class="sidenav-item-link {{ Request::is('feature/footer/feature') ? 'active' : '' }}"
                                             href="{{ route('footer.feature') }}">
                                             <span class="nav-text">Footer feature</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+
+                        <!-- Team -->
+                        <li class="has-sub {{ Request::is('team*') ? 'active' : '' }}">
+                            <a class="sidenav-item-link" href="javascript:void(0)">
+                                <i class="mdi mdi-account-multiple"></i>
+                                <span class="nav-text">Team</span> <b class="caret"></b>
+                            </a>
+                            <div class="collapse {{ Request::is('team*') ? 'show' : '' }}">
+                                <ul class="sub-menu" id="team" data-parent="#sidebar-menu">
+                                    <li class="">
+                                        <a class="sidenav-item-link {{ Request::is('team/list') ? 'active' : '' }}"
+                                            href="{{ route('team.list') }}">
+                                            <span class="nav-text">All team</span>
+                                        </a>
+                                    </li>
+                                    <li class="">
+                                        <a class="sidenav-item-link {{ Request::is('team') ? 'active' : '' }}"
+                                            href="{{ route('team') }}">
+                                            <span class="nav-text">Add team</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+
+                        <!-- Faq -->
+                        <li class="has-sub {{ Request::is('faq*') ? 'active' : '' }}">
+                            <a class="sidenav-item-link" href="javascript:void(0)">
+                                <i class="mdi mdi-calendar-question"></i>
+                                <span class="nav-text">Faq's</span> <b class="caret"></b>
+                            </a>
+                            <div class="collapse {{ Request::is('faq*') ? 'show' : '' }}">
+                                <ul class="sub-menu" id="faqs" data-parent="#sidebar-menu">
+                                    <li class="">
+                                        <a class="sidenav-item-link {{ Request::is('faq/store*') ? 'active' : '' }}"
+                                            href="{{ route('faq.store') }}">
+                                            <span class="nav-text">Add faq</span>
+                                        </a>
+                                    </li>
+                                    <li class="">
+                                        <a class="sidenav-item-link {{ Request::is('faq/list') ? 'active' : '' }}"
+                                            href="{{ route('faq.list') }}">
+                                            <span class="nav-text">All faq</span>
                                         </a>
                                     </li>
                                 </ul>
@@ -485,9 +479,9 @@
                                 <i class="mdi mdi-finance"></i>
                                 <span class="nav-text">Transactions</span><b class="caret"></b>
                             </a>
-                            <div class="collapse {{ Request::is('payment') ? 'show' : '' }}">
+                            <div class="collapse {{ Request::is('payment*') ? 'show' : '' }}">
                                 <ul class="sub-menu" id="authentication" data-parent="#sidebar-menu">
-                                    <li class="{{ Request::is('payment') ? 'active' : '' }}" >
+                                    <li class="{{ Request::is('payment/transaction') ? 'active' : '' }}" >
                                         <a href="{{ route('payment') }}">
                                             <span class="nav-text">Payment details</span>
                                         </a>
@@ -505,6 +499,32 @@
                                 </ul>
                             </div>
                         </li>
+
+                        {{-- <li class="has-sub {{ Request::is('payment*') ? 'active' : '' }}">
+                            <a class="sidenav-item-link" href="javascript:void(0)">
+                                <i class="mdi mdi-cogs"></i>
+                                <span class="nav-text">Transactions</span> <b class="caret"></b>
+                            </a>
+                            <div class="collapse {{ Request::is('payment*') ? 'show' : '' }}">
+                                <ul class="sub-menu" id="setting" data-parent="#sidebar-menu">
+                                    <li class="">
+                                        <a class="sidenav-item-link {{ Request::is('payment') ? 'active' : '' }}" href="{{ route('payment') }}" > 
+                                            <span class="nav-text">Payment details</span>
+                                        </a>
+                                    </li>
+									<li class="">
+                                        <a class="sidenav-item-link {{ Request::is('setting/favicon') ? 'active' : '' }}" href="{{ route('favicon') }}">
+                                            <span class="nav-text">Favicon</span>
+                                        </a>
+                                    </li>
+									<li class="">
+                                        <a class="sidenav-item-link {{ Request::is('payment/transaction/list') ? 'active' : '' }}" href="{{ route('transaction.charge') }}">
+                                            <span class="nav-text">All transaction</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li> --}}
 
                         {{-- <li class="has-sub {{ Request::is('blog*') ? 'active' : '' }}">
                             <a class="sidenav-item-link" href="javascript:void(0)">
@@ -547,11 +567,6 @@
                             </a>
                             <div class="collapse {{ Request::is('setting*') ? 'show' : '' }}">
                                 <ul class="sub-menu" id="setting" data-parent="#sidebar-menu">
-                                    {{-- <li class="">
-										<a class="sidenav-item-link {{Request::is('setting/list') ? 'active' : ''}}" href="{{route('feature.list')}}">
-											<span class="nav-text">All feature</span>
-										</a>
-									</li> --}}
                                     <li class="">
                                         <a class="sidenav-item-link {{ Request::is('setting') ? 'active' : '' }}" href="{{ route('setting') }}" > 
                                             <span class="nav-text">Add setting</span>
