@@ -761,6 +761,7 @@
     <script src='{{ asset('backend/assets/plugins/data-tables/datatables.bootstrap5.min.js') }}'></script>
     <script src='{{ asset('backend/assets/plugins/data-tables/datatables.responsive.min.js') }}'></script>
     <script src="{{ asset('backend/assets/plugins/options-sidebar/optionswitcher.js') }}"></script>
+    <script src="{{ asset('backend/assets/js/jquery.printPage.js') }}"></script>
 
     <!-- include summernote js -->
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>

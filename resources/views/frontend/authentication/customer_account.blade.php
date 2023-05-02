@@ -126,7 +126,7 @@
                                                         @endphp
                                                         <td class="text-center m-auto">{{$product->rel_to_product->after_discount}} * {{$product->quantity}}</td>
                                                         <td>{{$product->rel_to_product->rel_to_category->category_name}}</td>
-                                                        <td class="text-center m-auto">{{$total}} Tkk</td>
+                                                        <td class="text-center m-auto">{{$total}} Tk</td>
                                                     </tr>
                                             </tbody>
                                             @endforeach

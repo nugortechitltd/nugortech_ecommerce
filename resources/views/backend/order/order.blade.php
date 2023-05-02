@@ -92,8 +92,7 @@
                                 <form action="{{route('order.status')}}" method="POST">
                                     @csrf
                                 <div class="btn-group mb-1">
-                                    <button type="button"
-                                        class="btn btn-outline-success">Info</button>
+                                    <a href="{{route('order.view', $order->id)}}" style="padding: 3px 10px; border-radius: 15px 0 0 15px !important" class="btn btn-outline-success">Info</a>
                                     <button type="button"
                                         class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
                                         data-bs-toggle="dropdown" aria-haspopup="true"

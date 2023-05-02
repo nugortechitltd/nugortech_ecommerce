@@ -23,6 +23,7 @@ use App\Http\Controllers\MaincategoryController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PosterController;
+use App\Http\Controllers\PrintController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoleController;
@@ -185,6 +186,10 @@ Route::post('/order/store', [OrderController::class, 'order_store'])->name('orde
 Route::get('/order/success', [OrderController::class, 'order_success'])->name('order.success');
 Route::get('/order/list', [OrderController::class, 'order'])->name('order');
 Route::post('/order/status', [OrderController::class, 'order_status'])->name('order.status');
+Route::get('/order/view/{order_id}', [PrintController::class, 'order_view'])->name('order.view');
+
+
+
 
 
 // Invoice download

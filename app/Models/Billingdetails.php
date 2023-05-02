@@ -12,4 +12,8 @@ class Billingdetails extends Model
     function rel_to_order() {
         return $this->belongsTo(Order::class, 'order_id');
     }
+
+    function rel_to_customer() {
+        return $this->belongsTo(Customerauth::class, 'customer_id');
+    }
 }

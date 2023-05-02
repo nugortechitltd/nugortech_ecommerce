@@ -19,7 +19,6 @@ class CheckoutController extends Controller
             'cart' => $carts,
             'payments' => $payments,
             'charge_details' => $charge_details,
-            
         ]);
     }
 }
