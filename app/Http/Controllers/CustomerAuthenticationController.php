@@ -32,14 +32,14 @@ class CustomerAuthenticationController extends Controller
                 'created_at' => Carbon::now(),
             ]);
             
-            // $customer = Customerauth::where('email', $request->email)->firstOrFail();
-            // $customer_info = CustomerEmailVerify::create([
-            //     'customer_id' => $customer->id,
-            //     'token' => uniqid(),
-            //     'created_at' => Carbon::now(),
-            // ]);
-            // Notification::send($customer, new CustomerEmailVerifyNotification($customer_info));
-            return redirect()->route('customer.login')->withSuccess('You have been registered successfully');
+            $customer = Customerauth::where('email', $request->email)->firstOrFail();
+            $customer_info = CustomerEmailVerify::create([
+                'customer_id' => $customer->id,
+                'token' => uniqid(),
+                'created_at' => Carbon::now(),
+            ]);
+            Notification::send($customer, new CustomerEmailVerifyNotification($customer_info));
+            return back()->withSuccess('We have sent you an email verification link! please check your email');
         } else {
             return back()->withError('Cutomer password credentials do not matched.');
         }
@@ -47,14 +47,14 @@ class CustomerAuthenticationController extends Controller
     }
 
     // Customer email verify
-    // function customer_email_verify($token) {
-    //     $customer = CustomerEmailVerify::where('token', $token)->firstOrFail();
-    //     Customerauth::find($customer->customer_id)->update([
-    //         'email_verified_at' => Carbon::now()->format('Y-m-d'),
-    //     ]);
-    //     $customer->delete();
-    //     return redirect()->route('customer.login')->withSuccess('Your email verified Successfully! Now you can login');
-    // }
+    function customer_email_verify($token) {
+        $customer = CustomerEmailVerify::where('token', $token)->firstOrFail();
+        Customerauth::find($customer->customer_id)->update([
+            'email_verified_at' => Carbon::now()->format('Y-m-d'),
+        ]);
+        $customer->delete();
+        return redirect()->route('customer.login')->withSuccess('Your email verified Successfully! Now you can login');
+    }
 
     // customer_login_store
     function customer_login_store(Request $request) {
@@ -62,23 +62,16 @@ class CustomerAuthenticationController extends Controller
             'email' => 'required',
             'password' => 'required',
         ]);
-        // if(Auth::guard('customerauth')->attempt(['email'=>$request->email, 'password'=>$request->password])) {
-        //     if(Auth::guard('customerauth')->user()->email_verified_at == null) {
-        //         Auth::guard('customerauth')->logout();
-        //         return redirect()->route('customer.login')->withError('Your account is not verified yet. Please check your email and verify your email');
-        //     } else {
-        //         return redirect()->route('site')->withSuccess('Customer logged in succesfully');
-        //     }
-        // } else {
-        //     return redirect()->route('customer.register')->withError('Please create an account');
-        // }
         if(Auth::guard('customerauth')->attempt(['email'=>$request->email, 'password'=>$request->password])) {
-                // Auth::guard('customerauth')->logout();
-                return redirect()->route('customer.login')->withSuccess('You have successfully logged in!');
+            if(Auth::guard('customerauth')->user()->email_verified_at == null) {
+                Auth::guard('customerauth')->logout();
+                return redirect()->route('customer.login')->withError('Your account is not verified yet. Please check your email and verify your email');
+            } else {
+                return redirect()->route('site')->withSuccess('Customer logged in succesfully');
+            }
         } else {
             return redirect()->route('customer.register')->withError('Please create an account');
         }
-
         return back();
     }
 
